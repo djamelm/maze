@@ -1,33 +1,52 @@
-# 🎯 Simulation Moose Test - Robot Suiveur de Ligne PID
+# 🚗 Simulation Moose Test – Robot Suiveur de Ligne avec PID
 
-Ce projet est une simulation de robots suiveurs de ligne utilisant un contrôleur PID. Les robots suivent une piste définie (blanche sur fond noir), et vous pouvez ajuster les paramètres PID en temps réel pour observer leur comportement. Le projet inclut deux robots comparatifs, des visualisations en temps réel des courbes d'erreur, et des fonctionnalités d'enregistrement.
+Ce projet est une simulation de robots suiveurs de ligne dans un scénario de **Moose Test** (évitement rapide) utilisant un contrôleur **PID**. Les robots suivent une piste définie (blanche sur fond noir), et vous pouvez ajuster les paramètres PID en temps réel pour observer leur comportement. Le projet inclut deux robots comparatifs, des visualisations en temps réel des courbes d'erreur, et des fonctionnalités d'enregistrement.
 
 ---
 
 ## 📋 Sommaire
 
-1. [Fonctionnalités principales](#-fonctionnalités-principales)
-1. [Installation](#-installation)
-2. [Utilisation](#-utilisation)
-3. [Contrôles](#-contrôles)
-4. [Structure du Projet](#-structure-du-projet)
-5. [Contribution](#-contribution)
-6. [Licence](#-licence)
-7. [Contact](#-contact)
+1. [✨ Fonctionnalités](#-fonctionnalités)
+2. [🔧 Installation](#-installation)
+3. [🚀 Utilisation](#-utilisation)
+4. [🎮 Contrôles](#-contrôles)
+5. [🗂️ Structure du Projet](#-structure-du-projet)
+6. [🤝 Contribution](#-contribution)
+7. [📝 Licence](#-licence)
+8. [📬 Contact](#-contact)
 
 ---
 
-## ✅ Fonctionnalités principales
+## ✨ Fonctionnalités
 
-- **Modélisation réaliste** : Robots rectangulaires avec 2 roues motrices arrière et 1 roue folle avant.
-- **Suivi de ligne** : Détection de ligne blanche sur fond noir avec 5 capteurs IR simulés.
-- **Contrôle PID** : Algorithme PID temps réel pour réguler la direction des robots.
-- **Visualisation** :
-  - Courbes d'erreur en temps réel (type oscilloscope)
-  - Historique des trajectoires parcourues
-  - Indicateur de direction dynamique
-- **Comparaison en temps réel** : Deux robots avec PID configurables indépendamment.
-- **Enregistrement** : Capture d'écran (PNG) et enregistrement GIF optionnel.
+### ➤ Robots
+
+* Forme : Rectangle (2 roues motrices + roue folle).
+* Capteurs : 5 capteurs IR simulés, lecture analogique (0–1024).
+* Mouvements : Avance à vitesse constante, PID ajuste l’angle.
+* Chaque capteur est pondéré : `[-2, -1, 0, 1, 2]`.
+
+### 🔁 Trajectoire
+
+* Ligne blanche sur fond noir,ligniare type Moose Test.
+
+### 🎛️ Réglages PID en temps réel
+
+* **Robot 1** : `Q/A` Kp | `W/S` Ki | `E/D` Kd
+* **Robot 2** : `U/J` Kp | `I/K` Ki | `O/L` Kd
+
+### 📈 Visualisation intégrée
+
+* Valeurs Kp, Ki, Kd affichées.
+* Courbes en direct des erreurs PID (oscilloscope intégré Pygame).
+* Dessin des trajectoires parcourues.
+* Flèches directionnelles selon l’erreur PID.
+
+### 💾 Enregistrement
+
+* `F1` : Capture PNG
+* `F2` : Toggle enregistrement GIF (via `imageio`)
+* `R` : Réinitialisation simulation (sans réinitialiser les PID)
 
 ---
 
@@ -58,12 +77,11 @@ Pour démarrer la simulation, exécutez le fichier principal main.py :
 ```bash
 python main.py
 ```
-
 Le programme s'exécute à **60 FPS** avec une vitesse de déplacement de **2 pixels par frame**.
 
 ---
 
-## ⌨️ Contrôles
+## 🎮 Contrôles
 
 Voici les contrôles disponibles pour ajuster les paramètres PID des robots et interagir avec la simulation :
 
@@ -78,14 +96,16 @@ Voici les contrôles disponibles pour ajuster les paramètres PID des robots et 
 
 ### Général
 
-* `R` : Réinitialise les positions des robots
-* `F1` : Capture d'écran (enregistrée sous screenshot.png)
-* `F2` : Basculer l'enregistrement GIF (si activé, enregistre les images pour créer une animation GIF à la fin sous le nom: simulation.gif)
-* `ESC` : Quitte la simulation
+| Touche | Action                                |
+| ------ | ------------------------------------- |
+| `R`    | Réinitialise les positions des robots          |
+| `F1`   | Sauvegarde screenshot PNG             |
+| `F2`   | Démarrer / arrêter enregistrement GIF |
+| `ESC`  | Quitter la simulation                 |
 
 ---
 
-## 🗂️ Structure du projet
+## 🗂️ Structure du Projet
 
 ```
 project_root/
@@ -109,7 +129,7 @@ project_root/
 
 ## 🤝 Contribution
 
-Les contributions sont bienvenues ! Pour contribuer :
+Les contributions sont les bienvenues ! Pour contribuer :
 
 1. Fork le dépôt
 2. Créez votre branche de fonctionnalité (`git checkout -b feature/nouvelle-fonction`)
@@ -119,16 +139,18 @@ Les contributions sont bienvenues ! Pour contribuer :
 
 ---
 
-## 📄 Licence
+## 📝 Licence
 
-Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+Ce projet est sous licence **MIT** - voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
 ---
 
 ## 📬 Contact
 
 Pour toute question ou suggestion :
-- Email : djameleddine.mekki27@gmail.com
-- GitHub : [https://github.com/votre-nom/moose-test-simulator](https://github.com/votre-nom/moose-test-simulator)
+
+> ✉️ Email : [djameleddine.mekki27@gmail.com](mailto:djameleddine.mekki27@gmail.com)
+
+> 🔗 GitHub : [@djamelm](https://github.com/djamelm)
 
 ---

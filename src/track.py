@@ -29,7 +29,8 @@ class Track:
             (650, self.height // 2 + 50),
             # Phase 4: ligne droite finale
             (750, self.height // 2),
-            (950, self.height // 2)
+            (800, self.height // 2),
+            (800, self.height // 2-100)
         ]
     def get_track_points(self):
         return self.points

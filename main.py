@@ -69,5 +69,5 @@ while running:
     frames = record_frame(screen, recording, frames)
 
     # Limiter le taux de rafraîchissement
-    clock.tick(60)
+    clock.tick(10)
     pygame.display.flip()

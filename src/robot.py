@@ -1,6 +1,5 @@
 import pygame
 import math
-import random
 from src.pid_controller import *
 from configuration.colors import *
 from configuration.robot import *
@@ -43,7 +42,7 @@ class Robot:
             (self.width*0.4,  self.height*0.4)
         ]
         self.sensor_positions=self.get_sensor_positions()
-        self.sensor_values = [0] * self.sensor_count
+        self.sensor_values = [0,0,0,0,0]
         self.sensor_weights = [-2, -1, 0, 1, 2]  # Poids pour calcul d'erreur
         
         # Contrôleur PID
@@ -173,8 +172,22 @@ class Robot:
         # Capteurs (points)
         # Dessin des capteurs
         self.sensor_positions=self.get_sensor_positions()
-        for pos in self.sensor_positions:
-            pygame.draw.circle(screen, GREEN, (int(pos[0]), int(pos[1])), 3)
+        # Calcul de l'erreur pondérée
+        for i in range(len(self.sensor_positions)):
+            # Debugging: Check the type and value of `i`
+            pos= self.sensor_positions[i]
+            sensor_value = int(self.sensor_values[i])
+
+            # Define color based on sensor value thresholds
+            if sensor_value < 256:
+                color = BLUE  # Assuming BLUE is defined
+            elif 256 <= sensor_value < 512:
+                color = YELLOW  # Assuming YELLOW is defined
+            elif 512 <= sensor_value < 768:
+                color = GREEN
+            else:
+                color = RED
+            pygame.draw.circle(screen, color, (int(pos[0]), int(pos[1])), 3)
         
         # Trajectoire ou Chemin parcouru
         if len(self.path_history) > 1:
@@ -212,10 +225,10 @@ class Robot:
             sensor_value = int((inverted_distance / max_distance) * 1024)
 
             # Assurez-vous que la valeur est comprise entre 0 et 1024
-            sensor_value = max(0, min(sensor_value, 1024))
+            sensor_value = max(99, min(sensor_value, 1024))
 
             sensor_values.append(sensor_value)
-
+        self.sensor_values=sensor_values
         return sensor_values
         """Récupère les valeurs des capteurs IR"""
         """Lecture des capteurs IR simulés"""
