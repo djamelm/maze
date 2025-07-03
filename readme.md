@@ -1,20 +1,37 @@
-# Simulation Moose Test - Robot Suiveur de Ligne PID
+# 🎯 Simulation Moose Test - Robot Suiveur de Ligne PID
 
-Ce projet est une simulation de robots suiveurs de ligne utilisant un contrôleur PID. Les robots suivent une piste définie (Moose Test), et vous pouvez ajuster les paramètres PID en temps réel pour observer leur comportement.
+Ce projet est une simulation de robots suiveurs de ligne utilisant un contrôleur PID. Les robots suivent une piste définie (blanche sur fond noir), et vous pouvez ajuster les paramètres PID en temps réel pour observer leur comportement. Le projet inclut deux robots comparatifs, des visualisations en temps réel des courbes d'erreur, et des fonctionnalités d'enregistrement.
 
-## Table des Matières
+---
 
-1. [Installation](#installation)
-2. [Utilisation](#utilisation)
-3. [Contrôles](#contrôles)
-4. [Structure du Projet](#structure-du-projet)
-5. [Contribution](#contribution)
-6. [Licence](#licence)
-7. [Contact](#contact)
+## 📋 Sommaire
 
-## Installation
+1. [Fonctionnalités principales](#-fonctionnalités-principales)
+1. [Installation](#-installation)
+2. [Utilisation](#-utilisation)
+3. [Contrôles](#-contrôles)
+4. [Structure du Projet](#-structure-du-projet)
+5. [Contribution](#-contribution)
+6. [Licence](#-licence)
+7. [Contact](#-contact)
 
-Pour exécuter ce projet, vous aurez besoin de Python et de quelques bibliothèques supplémentaires. Voici comment les installer :
+---
+
+## ✅ Fonctionnalités principales
+
+- **Modélisation réaliste** : Robots rectangulaires avec 2 roues motrices arrière et 1 roue folle avant.
+- **Suivi de ligne** : Détection de ligne blanche sur fond noir avec 5 capteurs IR simulés.
+- **Contrôle PID** : Algorithme PID temps réel pour réguler la direction des robots.
+- **Visualisation** :
+  - Courbes d'erreur en temps réel (type oscilloscope)
+  - Historique des trajectoires parcourues
+  - Indicateur de direction dynamique
+- **Comparaison en temps réel** : Deux robots avec PID configurables indépendamment.
+- **Enregistrement** : Capture d'écran (PNG) et enregistrement GIF optionnel.
+
+---
+
+## 🔧 Installation
 
 ### Prérequis
 
@@ -23,13 +40,18 @@ Pour exécuter ce projet, vous aurez besoin de Python et de quelques bibliothèq
 - NumPy
 - Imageio(pour l'enregistrement GIF)
 
+### Installation des dépendances
+
 Vous pouvez installer les bibliothèques nécessaires en utilisant pip :
 
 ```bash
 python -m pip install pygame numpy imageio pyplot matplotlib
 ```
+> ⚠️ **Note** : Bien que le projet utilise `imageio` pour l'enregistrement GIF, cette fonctionnalité peut être désactivée si nécessaire pour respecter les contraintes sans dépendances externes.
 
-## Utilisation
+---
+
+## 🚀 Utilisation
 
 Pour démarrer la simulation, exécutez le fichier principal main.py :
 
@@ -37,27 +59,22 @@ Pour démarrer la simulation, exécutez le fichier principal main.py :
 python main.py
 ```
 
-## Contrôles
+Le programme s'exécute à **60 FPS** avec une vitesse de déplacement de **2 pixels par frame**.
+
+---
+
+## ⌨️ Contrôles
 
 Voici les contrôles disponibles pour ajuster les paramètres PID des robots et interagir avec la simulation :
 
-### Robot 1
-
-* `Q` : Augmente Kp de 0.1
-* `A` : Diminue Kp de 0.1
-* `W` : Augmente Ki de 0.01
-* `S` : Diminue Ki de 0.01
-* `E` : Augmente Kd de 0.05
-* `D` : Diminue Kd de 0.05
-
-### Robot 2
-
-* `U` : Augmente Kp de 0.1
-* `J` : Diminue Kp de 0.1
-* `I` : Augmente Ki de 0.01
-* `K` : Diminue Ki de 0.01
-* `O` : Augmente Kd de 0.05
-* `L` : Diminue Kd de 0.05
+| Fonctionnalité | Robot 1 | Robot 2 | Step |
+|----------------|---------|---------|---------|
+| **Augmenter Kp** | `Q` | `U` | 0.1 |
+| **Diminuer Kp** | `A` | `J` | 0.1 |
+| **Augmenter Ki** | `W` | `I` | 0.01 |
+| **Diminuer Ki** | `S` | `K` | 0.01 |
+| **Augmenter Kd** | `E` | `O` | 0.05 |
+| **Diminuer Kd** | `D` | `L` | 0.05 |
 
 ### Général
 
@@ -66,11 +83,11 @@ Voici les contrôles disponibles pour ajuster les paramètres PID des robots et 
 * `F2` : Basculer l'enregistrement GIF (si activé, enregistre les images pour créer une animation GIF à la fin sous le nom: simulation.gif)
 * `ESC` : Quitte la simulation
 
-## Structure du Projet
+---
 
-Le projet est structuré comme suit :
+## 🗂️ Structure du projet
 
-```bash
+```
 project_root/
 │── main.py                # Point d'entrée pour exécuter la simulation
 │── configuration/
@@ -87,17 +104,31 @@ project_root/
 │   └── visualization.py   # Gestion de l'affichage et des graphiques
 │── README.md              # Documentation du projet
 ```
-## Contribution
 
-Les contributions sont bienvenues ! Voici comment vous pouvez contribuer :
+---
 
-Fork le dépôt du projet.
-Créez votre branche de fonctionnalité (git checkout -b feature/my-new-feature).
-Commitez vos changements (git commit -am 'Add some feature').
-Poussez vers la branche (git push origin feature/my-new-feature).
-Ouvrez une Pull Request.
+## 🤝 Contribution
 
-## Licence
-Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
-## Contact
-Pour toute question ou suggestion, veuillez ouvrir une issue ou contacter via djameleddine.mekki27@gmail.com.
+Les contributions sont bienvenues ! Pour contribuer :
+
+1. Fork le dépôt
+2. Créez votre branche de fonctionnalité (`git checkout -b feature/nouvelle-fonction`)
+3. Committez vos modifications (`git commit -am 'Ajout de nouvelles fonctionnalités'`)
+4. Poussez vers la branche (`git push origin feature/nouvelle-fonction`)
+5. Ouvrez une Pull Request
+
+---
+
+## 📄 Licence
+
+Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+---
+
+## 📬 Contact
+
+Pour toute question ou suggestion :
+- Email : djameleddine.mekki27@gmail.com
+- GitHub : [https://github.com/votre-nom/moose-test-simulator](https://github.com/votre-nom/moose-test-simulator)
+
+---

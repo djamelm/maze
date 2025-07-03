@@ -29,7 +29,7 @@ def handle_events(robots, screen, running, recording, frames):
                 recording = not recording
                 if not recording and frames:
                     # Sauvegarder l'animation GIF
-                    imageio.mimsave('simulation.gif', frames, fps=10)
+                    imageio.mimsave('simulation.gif', frames, fps=24)
                     frames = []
 
             # Commandes pour ajuster les paramètres PID du robot 1
