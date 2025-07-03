@@ -1,6 +1,6 @@
 # Simulation Moose Test - Robot Suiveur de Ligne PID
 
-Ce projet est une simulation de robots suiveurs de ligne utilisant un contrôleur PID. Les robots suivent une piste définie, et vous pouvez ajuster les paramètres PID en temps réel pour observer leur comportement.
+Ce projet est une simulation de robots suiveurs de ligne utilisant un contrôleur PID. Les robots suivent une piste définie (Moose Test), et vous pouvez ajuster les paramètres PID en temps réel pour observer leur comportement.
 
 ## Table des Matières
 
@@ -21,7 +21,7 @@ Pour exécuter ce projet, vous aurez besoin de Python et de quelques bibliothèq
 - Python 3.x
 - Pygame
 - NumPy
-- Imageio
+- Imageio(pour l'enregistrement GIF)
 
 Vous pouvez installer les bibliothèques nécessaires en utilisant pip :
 
@@ -62,8 +62,8 @@ Voici les contrôles disponibles pour ajuster les paramètres PID des robots et 
 ### Général
 
 * `R` : Réinitialise les positions des robots
-* `F1` : Capture d'écran
-* `F2` : Basculer l'enregistrement GIF (si activé, enregistre les images pour créer une animation GIF à la fin)
+* `F1` : Capture d'écran (enregistrée sous screenshot.png)
+* `F2` : Basculer l'enregistrement GIF (si activé, enregistre les images pour créer une animation GIF à la fin sous le nom: simulation.gif)
 * `ESC` : Quitte la simulation
 
 ## Structure du Projet
@@ -81,9 +81,9 @@ project_root/
 │── src/
 │   ├── visualization.py       # Gestion de l'affichage et des graphiques
 │   ├── utils.py               # Fonctions utilitaires pour la gestion des événements et des captures
-│   ├── pid_controller.py  # Contrôleur PID
+│   ├── pid_controller.py  # Logique du contrôleur PID
 │   ├── robot.py           # Classe Robot et logiques associées
-│   ├── track.py           # Classe Track et logiques associées
+│   ├── track.py           # Gestion du rendu de la piste
 │   └── visualization.py   # Gestion de l'affichage et des graphiques
 │── README.md              # Documentation du projet
 ```
@@ -91,15 +91,13 @@ project_root/
 
 Les contributions sont bienvenues ! Voici comment vous pouvez contribuer :
 
-Fork le dépôt de projet.
+Fork le dépôt du projet.
 Créez votre branche de fonctionnalité (git checkout -b feature/my-new-feature).
 Commitez vos changements (git commit -am 'Add some feature').
 Poussez vers la branche (git push origin feature/my-new-feature).
 Ouvrez une Pull Request.
-Licence
 
+## Licence
 Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
-
 ## Contact
-
-Pour toute question ou suggestion, veuillez ouvrir une issue ou nous contacter via : djameleddine.mekki27@gmail.com.
+Pour toute question ou suggestion, veuillez ouvrir une issue ou contacter via djameleddine.mekki27@gmail.com.
