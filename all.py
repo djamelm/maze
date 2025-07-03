@@ -20,6 +20,7 @@ from configuration.colors import *
 from src.robot import *
 from src.track import *
 from src.utils import save_screenshot, handle_events, record_frame
+from src.visualization import Visualization
 
 # Initialisation Pygame
 pygame.init()
@@ -51,6 +52,8 @@ running = True
 recording = False
 frames = []
 
+# Initialiser la classe Visualization
+viz = Visualization(WIDTH, HEIGHT)
 while running:
     # Gestion des événements
     running, recording, frames = handle_events(robots, screen, running, recording, frames)
@@ -58,14 +61,17 @@ while running:
     # Effacer l'écran
     screen.fill(BACKGROUND)
     track.draw_track(screen)
-    draw_info(screen, robots, 0)
 
     # Logique de mise à jour des robots et Dessiner les éléments de la simulation
     for robot in robots:
         robot.draw(screen)
         robot.update(track)
-        draw_pid_graph(screen, robots[0].pid.error_history, robots[1].pid.error_history, TRACK_WIDTH, 0, GRAPH_WIDTH, HEIGHT // 2)
 
+    # Dessiner les informations et les graphiques
+    viz.draw_info(screen, robots, selected=0)
+    viz.draw_pid_graph(screen, robots[0].error_log, robots[1].error_log, WIDTH - 300, 0, 300, HEIGHT)
+    viz.draw_hud(screen, robots[0], robots[1])
+    viz.draw_title(screen)
     # Mettre à jour l'affichage
     pygame.display.flip()
 
