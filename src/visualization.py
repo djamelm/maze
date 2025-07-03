@@ -30,70 +30,54 @@ class Visualization:
             y += 22
 
     def draw_pid_graph(self, surface, errors1, errors2, x, y, width, height):
-        """Dessine le graphique des erreurs PID."""
+        """Dessine le graphique PID"""
         # Cadre du graphique
         pygame.draw.rect(surface, (40, 40, 60), (x, y, width, height))
         pygame.draw.rect(surface, (100, 100, 150), (x, y, width, height), 2)
-
+        
         # Titre
         title = self.title_font.render("Erreur PID", True, LIGHT_BLUE)
         surface.blit(title, (x + width//2 - title.get_width()//2, y + 10))
-
+        
         # Lignes de grille
         for i in range(1, 5):
             pygame.draw.line(surface, (60, 60, 80),
                             (x, y + i * height//5),
                             (x + width, y + i * height//5), 1)
-
+        
         # Axe central (zéro)
         pygame.draw.line(surface, (100, 100, 150),
                         (x, y + height//2),
                         (x + width, y + height//2), 1)
-
+        
         # Courbe d'erreur pour le robot 1
         if len(errors1) > 1:
             points = []
             for i, error in enumerate(errors1):
-                px = x + width - (len(errors1) - i) * 3
-                py = y + height//2 - error * height//3
+                px = x + width - (len(errors1) - i) * width/100
+                py = y + min(height, max(-height,height//2 - error * height//3))
                 points.append((px, py))
-
+            
             pygame.draw.lines(surface, BLUE, False, points, 2)
-
+        
         # Courbe d'erreur pour le robot 2
         if len(errors2) > 1:
             points = []
             for i, error in enumerate(errors2):
-                px = x + width - (len(errors2) - i) * 3
-                py = y + height//2 - error * height//3
+                px = x + width - (len(errors2) - i) *  width/100
+                py = y + min(height, max(-height,height//2 - error * height//3))
                 points.append((px, py))
-
+            
             pygame.draw.lines(surface, ORANGE, False, points, 2)
-
+        
         # Légendes
         pygame.draw.line(surface, BLUE, (x + 20, y + height - 30), (x + 50, y + height - 30), 2)
         pygame.draw.line(surface, ORANGE, (x + 20, y + height - 10), (x + 50, y + height - 10), 2)
-
+        
         text1 = self.font.render("Robot 1", True, BLUE)
         text2 = self.font.render("Robot 2", True, ORANGE)
         surface.blit(text1, (x + 60, y + height - 45))
         surface.blit(text2, (x + 60, y + height - 25))
-
-    def draw_hud(self, surface, robot1, robot2):
-        """Dessiner le HUD avec les informations des robots."""
-        texts = [
-            f"Robot 1 (Blue) - Error: {robot1.error:.2f}",
-            f"Kp: {robot1.Kp:.3f} (Q/A)",
-            f"Ki: {robot1.Ki:.3f} (W/S)",
-            f"Kd: {robot1.Kd:.3f} (E/D)",
-            f"Robot 2 (Orange) - Error: {robot2.error:.2f}",
-            f"Kp: {robot2.Kp:.3f} (U/J)",
-            f"Ki: {robot2.Ki:.3f} (I/K)",
-            f"Kd: {robot2.Kd:.3f} (O/L)",
-            "R: Reset, F1: Screenshot, F2: Toggle GIF, ESC: Quit"
-        ]
-        for i, text in enumerate(texts):
-            surface.blit(self.font.render(text, True, WHITE), (TRACK_WIDTH + 10, 10 + i * 30))
 
     def draw_title(self, surface):
         """Dessine le titre principal de la simulation."""

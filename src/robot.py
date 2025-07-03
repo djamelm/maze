@@ -216,7 +216,6 @@ class Robot:
 
             sensor_values.append(sensor_value)
 
-        print(sensor_values)
         return sensor_values
         """Récupère les valeurs des capteurs IR"""
         """Lecture des capteurs IR simulés"""

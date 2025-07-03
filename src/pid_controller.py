@@ -8,6 +8,7 @@ class PID:
         self.last_error = 0.0
         self.previous_error = 0.0
         self.error_history = []
+        self.output_history = []
         self.max_history = max_history
         self.integral_limit = 100.0  # Limite pour éviter le windup
 
@@ -45,7 +46,9 @@ class PID:
         self.error_history.append(error/sur)
         if len(self.error_history) > self.max_history:
             self.error_history.pop(0)
-
+        if len(self.output_history) > self.max_history:
+            self.output_history.pop(0)
+        self.output_history.append(output)
         return output
 
     def reset(self):
