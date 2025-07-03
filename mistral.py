@@ -10,7 +10,7 @@ import imageio
 pygame.init()
 
 # Dimensions de la fenêtre
-WIDTH, HEIGHT = 1200, 800
+WIDTH, HEIGHT = 1200, 700
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Simulation de Robot avec PID")
 

@@ -5,7 +5,7 @@ import os
 from datetime import datetime
 
 # Configuration
-WIDTH, HEIGHT = 1000, 800
+WIDTH, HEIGHT = 1000, 700
 FPS = 60
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
